@@ -1,14 +1,9 @@
 const { Router } = require("express");
+const { getLivros } = require("../controllers/livro");
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  try {
-    res.status(200).send("Olá mundo!");
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+router.get("/", (req, res) => getLivros(req, res));
 
 router.post("/", (req, res) => {
   res.status(201).send("Você fez uma requisição do tipo POST");
