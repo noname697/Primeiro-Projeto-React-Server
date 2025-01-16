@@ -10,4 +10,28 @@ function getLivroPorId(id) {
   return livroFiltrado;
 }
 
-module.exports = { getTodosLivros, getLivroPorId };
+function insereLivro(livroNovo) {
+  const livros = JSON.parse(fs.readFileSync("livros.json"));
+  const novaListaDeLivros = [...livros, livroNovo];
+
+  fs.writeFileSync("livros.json", JSON.stringify(novaListaDeLivros));
+}
+
+function modificaLivro(modificações, id) {
+  let livrosAtuais = JSON.parse(fs.readFileSync("livros.json"));
+  const indiceModificado = livrosAtuais.findIndex((livro) => livro.id === id);
+
+  const conteudoMudado = { ...livrosAtuais[indiceModificado], ...modificações };
+
+  livrosAtuais[indiceModificado] = conteudoMudado;
+
+  fs.writeFileSync("livros.json", JSON.stringify(livrosAtuais));
+}
+
+function excluiLivro(id) {
+  const livros = JSON.parse(fs.readFileSync("livros.json"));
+  const livrosFiltrados = livros.filter((livro) => livro.id !== id);
+  fs.writeFileSync("livros.json", JSON.stringify(livrosFiltrados));
+}
+
+module.exports = { getTodosLivros, getLivroPorId, insereLivro, modificaLivro, excluiLivro };
