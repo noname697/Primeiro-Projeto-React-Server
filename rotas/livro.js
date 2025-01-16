@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const { getLivros } = require("../controllers/livro");
+const { getLivros, getLivro } = require("../controllers/livro");
 
 const router = Router();
 
-router.get("/", (req, res) => getLivros(req, res));
+router.get("/", getLivros);
+router.get("/:id", getLivro);
 
 router.post("/", (req, res) => {
   res.status(201).send("Você fez uma requisição do tipo POST");

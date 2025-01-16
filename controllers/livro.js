@@ -1,4 +1,4 @@
-const { getTodosLivros } = require("../services/livro.js");
+const { getTodosLivros, getLivroPorId } = require("../services/livro.js");
 
 function getLivros(req, res) {
   try {
@@ -9,4 +9,14 @@ function getLivros(req, res) {
   }
 }
 
-module.exports = { getLivros };
+function getLivro(req, res) {
+  try {
+    const id = req.params.id;
+    const livro = getLivroPorId(id);
+    res.send(livro);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+module.exports = { getLivros, getLivro };

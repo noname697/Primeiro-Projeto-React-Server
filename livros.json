@@ -1,5 +1,5 @@
 [
-  { "id": 1, "nome": "Livro Irado" },
-  { "id": 2, "nome": "Livro Muito Legal" },
-  { "id": 3, "nome": "Livro mais que demais" }
+  { "id": "1", "nome": "Livro Irado" },
+  { "id": "2", "nome": "Livro Muito Legal" },
+  { "id": "3", "nome": "Livro mais que demais" }
 ]
